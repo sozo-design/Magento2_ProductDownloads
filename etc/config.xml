@@ -1,0 +1,13 @@
+<?xml version="1.0" ?>
+<!--
+  ~   Copyright (c) 2016 SOZO Design. All rights reserved.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <sozo_productdownloads>
+            <general>
+                <extension>pdf, doc, docx, rtf, txt, csv, xlsx, xls, jpg, jpeg, png, gif, zip</extension>
+            </general>
+        </sozo_productdownloads>
+    </default>
+</config>

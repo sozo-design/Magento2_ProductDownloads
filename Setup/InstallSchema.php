@@ -33,7 +33,7 @@ class InstallSchema implements InstallSchemaInterface {
         $installer->startSetup();
 
         /**
-         * Create table 'downloadable_link'
+         * Create table 'sozo_product_downloads'
          */
         $table = $installer->
                     getConnection()->
@@ -67,19 +67,22 @@ class InstallSchema implements InstallSchemaInterface {
                         ],
                         'Number of downloads'
                     )->
-                    addColumn('download_url',
+                    addColumn(
+                        'download_url',
                         \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
                         255,
                         [],
                         'Download Url'
                     )->
-                    addColumn('download_file',
+                    addColumn(
+                        'download_file',
                         \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
                         255,
                         [],
                         'Download File'
                     )->
-                    addColumn('download_type',
+                    addColumn(
+                        'download_type',
                         \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
                         20,
                         [],

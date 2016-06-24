@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<!--
+  ~   Copyright (c) 2016 SOZO Design. All rights reserved.
+  -->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceBlock name="product.info.details">
+            <block class="Sozo\ProductDownloads\Block\Product\Downloads" name="downloads.tab" as="downloads"
+                   template="Sozo_ProductDownloads::downloads.phtml" group="detailed_info">
+            </block>
+        </referenceBlock>
+    </body>
+</page>

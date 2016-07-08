@@ -172,7 +172,7 @@ class Router implements RouterInterface {
                     }
                     $urlKey = substr($urlKey, 0, -strlen($settings['suffix']) - 1);
                 }
-                /** @var \Sample\News\Model\Author $instance */
+                /** @var \Sozo\ProductDownloads\Model\Download $instance */
                 $instance = $settings['factory']->create();
 
                 $request->

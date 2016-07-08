@@ -24,7 +24,10 @@ class Downloads extends Template {
      * @param \Magento\Framework\Registry                      $coreRegistry
      * @param Download                                         $download
      */
-    public function __construct(\Magento\Framework\View\Element\Template\Context $context, \Magento\Framework\Registry $coreRegistry, Download $download)
+    public function __construct(
+        \Magento\Framework\View\Element\Template\Context $context, 
+        \Magento\Framework\Registry $coreRegistry, 
+        Download $download)
     {
         $this->download = $download;
         $this->coreRegistry = $coreRegistry;

@@ -3,6 +3,14 @@
   "description": "SOZO Design product page downloads module",
   "type": "magento2-module",
   "version": "1.0.0",
+  "author": [
+    {
+      "name": "Clive Walkden",
+      "email": "clive@sozodesign.co.uk",
+      "homepage": "https://sozodesign.co.uk",
+      "role": "Developer"
+    }
+  ],
   "license": "Proprietary",
   "require": {
     "php": "~5.5.0|~5.6.0|~7.0.0"

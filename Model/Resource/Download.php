@@ -1,4 +1,20 @@
 <?php
+/**
+ * SOZO Design
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category    SOZO Design
+ * @package     Sozo_ProductDownloads
+ * @copyright   Copyright (c) 2018 SOZO Design (https://sozodesign.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ *
+ */
 
 namespace Sozo\ProductDownloads\Model\Resource;
 
@@ -26,7 +42,7 @@ class Download extends AbstractDb
 
     public function load(AbstractModel $object, $value, $field = null)
     {
-        if (! is_numeric($value) && is_null($field)) {
+        if (!is_numeric($value) && is_null($field)) {
             $field = 'product_id';
         }
 
@@ -38,7 +54,7 @@ class Download extends AbstractDb
         $adapter = $this->getConnection();
 
         $select = $adapter->select()->from($this->getMainTable())->where('product_id = :product_id');
-        $binds = ['product_id' => (int) $id];
+        $binds = ['product_id' => (int)$id];
 
         return $adapter->fetchAll($select, $binds);
     }
@@ -64,7 +80,7 @@ class Download extends AbstractDb
 
     protected function _beforeDelete(AbstractModel $object)
     {
-        $condition = ['download_id = ?' => (int) $object->getId()];
+        $condition = ['download_id = ?' => (int)$object->getId()];
         $this->getConnection()->delete($this->getTable('sozo_product_downloads'), $condition);
 
         return parent::_beforeDelete($object);

@@ -1,6 +1,19 @@
 <?php
 /**
- *   Copyright (c) 2016 SOZO Design. All rights reserved.
+ * SOZO Design
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category    SOZO Design
+ * @package     Sozo_ProductDownloads
+ * @copyright   Copyright (c) 2018 SOZO Design (https://sozodesign.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ *
  */
 
 namespace Sozo\ProductDownloads\Setup;
@@ -17,12 +30,13 @@ use Magento\Framework\Setup\SchemaSetupInterface;
  * @package     Sozo\ProductDownloads
  * @copyright   Copyright (c) 2016, SOZO Design. All rights reserved
  */
-class InstallSchema implements InstallSchemaInterface {
+class InstallSchema implements InstallSchemaInterface
+{
 
     /**
      * Installs DB schema for a module
      *
-     * @param SchemaSetupInterface   $setup
+     * @param SchemaSetupInterface $setup
      * @param ModuleContextInterface $context
      *
      * @return void
@@ -36,60 +50,60 @@ class InstallSchema implements InstallSchemaInterface {
          * Create table 'sozo_product_downloads'
          */
         $table = $installer->
-                    getConnection()->
-                    newTable($installer->getTable('sozo_product_downloads'))->
-                    addColumn(
-                        'download_id',
-                        \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
-                        null, [
-                            'identity' => true,
-                            'unsigned' => true,
-                            'nullable' => false,
-                            'primary' => true
-                        ],
-                        'Download ID'
-                    )->
-                    addColumn(
-                        'product_id',
-                        \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
-                        null, [
-                            'unsigned' => true,
-                            'nullable' => false,
-                            'default' => '0'
-                        ],
-                        'Product ID'
-                    )->
-                    addColumn(
-                        'number_of_downloads',
-                        \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
-                        null, [
-                            'nullable' => true
-                        ],
-                        'Number of downloads'
-                    )->
-                    addColumn(
-                        'download_url',
-                        \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-                        255,
-                        [],
-                        'Download Url'
-                    )->
-                    addColumn(
-                        'download_file',
-                        \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-                        255,
-                        [],
-                        'Download File'
-                    )->
-                    addColumn(
-                        'download_type',
-                        \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
-                        20,
-                        [],
-                        'Download Type'
-                    )->
-                    addIndex($installer->getIdxName('sozo_product_downloads', ['product_id']), ['product_id'])->
-                    setComment('Product downloads table');
+        getConnection()->
+        newTable($installer->getTable('sozo_product_downloads'))->
+        addColumn(
+            'download_id',
+            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            null, [
+            'identity' => true,
+            'unsigned' => true,
+            'nullable' => false,
+            'primary' => true
+        ],
+            'Download ID'
+        )->
+        addColumn(
+            'product_id',
+            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            null, [
+            'unsigned' => true,
+            'nullable' => false,
+            'default' => '0'
+        ],
+            'Product ID'
+        )->
+        addColumn(
+            'number_of_downloads',
+            \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+            null, [
+            'nullable' => true
+        ],
+            'Number of downloads'
+        )->
+        addColumn(
+            'download_url',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            255,
+            [],
+            'Download Url'
+        )->
+        addColumn(
+            'download_file',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            255,
+            [],
+            'Download File'
+        )->
+        addColumn(
+            'download_type',
+            \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+            20,
+            [],
+            'Download Type'
+        )->
+        addIndex($installer->getIdxName('sozo_product_downloads', ['product_id']), ['product_id'])->
+        setComment('Product downloads table');
 
         $installer->getConnection()->createTable($table);
 

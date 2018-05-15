@@ -1,19 +1,36 @@
 <?xml version="1.0" ?>
 <!--
-  ~   Copyright (c) 2016 SOZO Design. All rights reserved.
+  ~ SOZO Design
+  ~
+  ~ NOTICE OF LICENSE
+  ~
+  ~ This source file is subject to the Open Software License (OSL 3.0)
+  ~ that is bundled with this package in the file LICENSE.
+  ~ It is also available through the world-wide-web at this URL:
+  ~ http://opensource.org/licenses/osl-3.0.php
+  ~
+  ~ @category    SOZO Design
+  ~ @package     Sozo_ProductDownloads
+  ~ @copyright   Copyright (c) 2018 SOZO Design (https://sozodesign.com)
+  ~ @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+  ~
   -->
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
         <tab id="sozo" sortOrder="10">
             <label>SOZO Design</label>
         </tab>
-        <section id="sozo_productdownloads" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+        <section id="sozo_productdownloads" translate="label" type="text" sortOrder="10" showInDefault="1"
+                 showInWebsite="1" showInStore="1">
             <label>Product Downloads</label>
             <tab>sozo</tab>
             <resource>Sozo_ProductDownloads::sozo_productdownloads</resource>
-            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="0"
+                   showInStore="0">
                 <label>Product Downloads</label>
-                <field id="extension" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="extension" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
                     <label>File Extensions</label>
                     <comment>Comma separated list of the allowed file extensions.</comment>
                     <can_be_empty>0</can_be_empty>

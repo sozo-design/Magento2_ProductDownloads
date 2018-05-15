@@ -1,6 +1,19 @@
 <?php
 /**
- *   Copyright (c) 2016 SOZO Design. All rights reserved.
+ * SOZO Design
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category    SOZO Design
+ * @package     Sozo_ProductDownloads
+ * @copyright   Copyright (c) 2018 SOZO Design (https://sozodesign.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ *
  */
 
 namespace Sozo\ProductDownloads\Block\Product;
@@ -8,7 +21,8 @@ namespace Sozo\ProductDownloads\Block\Product;
 use Magento\Framework\View\Element\Template;
 use Sozo\ProductDownloads\Model\Download;
 
-class Downloads extends Template {
+class Downloads extends Template
+{
 
     /**
      * @var Download
@@ -21,12 +35,12 @@ class Downloads extends Template {
 
     /**
      * @param \Magento\Framework\View\Element\Template\Context $context
-     * @param \Magento\Framework\Registry                      $coreRegistry
-     * @param Download                                         $download
+     * @param \Magento\Framework\Registry $coreRegistry
+     * @param Download $download
      */
     public function __construct(
-        \Magento\Framework\View\Element\Template\Context $context, 
-        \Magento\Framework\Registry $coreRegistry, 
+        \Magento\Framework\View\Element\Template\Context $context,
+        \Magento\Framework\Registry $coreRegistry,
         Download $download)
     {
         $this->download = $download;

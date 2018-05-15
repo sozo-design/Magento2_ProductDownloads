@@ -2,8 +2,8 @@
   "name": "sozodesign/productdownloads",
   "description": "SOZO Design product page downloads module",
   "type": "magento2-module",
-  "version": "1.0.0",
-  "author": [
+  "homepage": "https://github.com/sozo-design/Magento2_ProductDownloads",
+  "authors": [
     {
       "name": "Clive Walkden",
       "email": "clive@sozodesign.co.uk",
@@ -11,12 +11,14 @@
       "role": "Developer"
     }
   ],
-  "license": "Proprietary",
+  "license": "OSL3.0",
   "require": {
-    "php": "~5.5.0|~5.6.0|~7.0.0"
+    "magento/framework": ">=100.0.0"
   },
   "autoload": {
-    "files": [ "registration.php" ],
+    "files": [
+      "registration.php"
+    ],
     "psr-4": {
       "Sozo\\ProductDownloads\\": ""
     }

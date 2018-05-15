@@ -1,4 +1,20 @@
 <?php
+/**
+ * SOZO Design
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ *
+ * @category    SOZO Design
+ * @package     Sozo_ProductDownloads
+ * @copyright   Copyright (c) 2018 SOZO Design (https://sozodesign.com)
+ * @license     http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ *
+ */
 
 if ($block->isReadonly()) :
     $_readonly = ' disabled="disabled"';
@@ -12,7 +28,7 @@ $downloads = $block->getDownloads();
 
 <fieldset class="fieldset form-inline">
     <legend class="legend"><span><?php echo __('Product Downloads') ?></span></legend>
-    <p><?php echo __('Allowed filetypes')?>: <?php echo $block->getExtensions(); ?></p>
+    <p><?php echo __('Allowed filetypes') ?>: <?php echo $block->getExtensions(); ?></p>
 
     <br>
 
@@ -21,31 +37,31 @@ $downloads = $block->getDownloads();
         for ($i = 0; $i < 10; $i++) :
             $fileIndex = $i + 1;
             ?>
-        <div class="field">
-            <label class="label" for="product_download_<?php echo $fileIndex; ?>">
-                <span><?php echo __('File ') . $fileIndex ?></span>
-            </label>
+            <div class="field">
+                <label class="label" for="product_download_<?php echo $fileIndex; ?>">
+                    <span><?php echo __('File ') . $fileIndex ?></span>
+                </label>
 
-            <div class="control">
-                <?php
-                if (isset($downloads[$i])) :
-                    ?>
-                <a href="<?php echo $block->getDownloadUrl($downloads[$i]); ?>" target="_blank">
-                    <?php echo $downloads[$i]['download_file']; ?>
-                </a> -
-                <a href="<?php echo $block->getDeleteUrl($downloads[$i]['download_id']); ?>">
-                    <?php echo __('Delete File'); ?>
-                </a>
+                <div class="control">
                     <?php
-                else :
-                    ?>
-                <input type="file" id="product_download_<?php echo $fileIndex; ?>" name="downloads[]" value="1">
+                    if (isset($downloads[$i])) :
+                        ?>
+                        <a href="<?php echo $block->getDownloadUrl($downloads[$i]); ?>" target="_blank">
+                            <?php echo $downloads[$i]['download_file']; ?>
+                        </a> -
+                        <a href="<?php echo $block->getDeleteUrl($downloads[$i]['download_id']); ?>">
+                            <?php echo __('Delete File'); ?>
+                        </a>
                     <?php
-                endif;
-                ?>
+                    else :
+                        ?>
+                        <input type="file" id="product_download_<?php echo $fileIndex; ?>" name="downloads[]" value="1">
+                    <?php
+                    endif;
+                    ?>
+                </div>
             </div>
-        </div>
-            <?php
+        <?php
         endfor;
         ?>
     </div>

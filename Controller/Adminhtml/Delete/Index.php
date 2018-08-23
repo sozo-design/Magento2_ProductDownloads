@@ -18,20 +18,40 @@
 
 namespace Sozo\ProductDownloads\Controller\Adminhtml\Delete\Index;
 
+use Magento\Backend\App\Action\Context;
 use Magento\Framework\App\Action\Action;
+use Magento\Framework\App\Request\Http;
 use Sozo\ProductDownloads\Model\Download;
 use Sozo\ProductDownloads\Model\DownloadFactory;
 
 class Index extends Action
 {
+    /** @var \Magento\Framework\App\Request\Http  */
+    protected $request;
+
+    /** @var \Sozo\ProductDownloads\Model\Download  */
     private $download;
 
+    /** @var \Sozo\ProductDownloads\Model\DownloadFactory  */
     private $downloadFactory;
 
-    public function __construct(\Magento\Backend\App\Action\Context $context, Download $download, DownloadFactory $downloadFactory)
-    {
+    /**
+     * Index constructor.
+     *
+     * @param \Magento\Backend\App\Action\Context          $context
+     * @param \Sozo\ProductDownloads\Model\Download        $download
+     * @param \Sozo\ProductDownloads\Model\DownloadFactory $downloadFactory
+     * @param \Magento\Framework\App\Request\Http          $request
+     */
+    public function __construct(
+      Context $context,
+      Download $download,
+      DownloadFactory $downloadFactory,
+      Http $request
+    ) {
         $this->download = $download;
         $this->downloadFactory = $downloadFactory;
+        $this->request = $request;
 
         parent::__construct($context);
     }
@@ -39,7 +59,7 @@ class Index extends Action
     public function execute()
     {
         $resultRedirect = $this->resultRedirectFactory->create();
-        if ($downloadId = $_GET['download_id']) {
+        if ($downloadId = $this->request->getParam('download_id')) {
             $name = "";
             try {
                 /** @var \Sozo\ProductDownloads\Model\Download $download */
@@ -50,26 +70,32 @@ class Index extends Action
                 $download->delete();
                 $this->messageManager->addSuccess(__('The download has been deleted.'));
                 $this->_eventManager->dispatch(
-                    'adminhtml_sozo_productdownloads_download_on_delete',
-                    [
-                        'name' => $name,
-                        'status' => 'success'
-                    ]
+                  'adminhtml_sozo_productdownloads_download_on_delete',
+                  [
+                    'name'   => $name,
+                    'status' => 'success',
+                  ]
                 );
-                $resultRedirect->setPath('catalog/product/edit/*', ['id' => $productId, 'active_tab' => 'downloads']);
+                $resultRedirect->setPath('catalog/product/edit/*', [
+                  'id'         => $productId,
+                  'active_tab' => 'downloads',
+                ]);
                 return $resultRedirect;
             } catch (\Exception $e) {
                 $this->_eventManager->dispatch(
-                    'adminhtml_sozo_productdownloads_delete_on_delete',
-                    [
-                        'name' => $name,
-                        'status' => 'fail'
-                    ]
+                  'adminhtml_sozo_productdownloads_delete_on_delete',
+                  [
+                    'name'   => $name,
+                    'status' => 'fail',
+                  ]
                 );
                 // display error message
                 $this->messageManager->addError($e->getMessage());
                 // go back to edit form
-                $resultRedirect->setPath('catalog/product/edit/', ['id' => $productId, 'active_tab' => 'downloads']);
+                $resultRedirect->setPath('catalog/product/edit/', [
+                  'id'         => $productId,
+                  'active_tab' => 'downloads',
+                ]);
                 return $resultRedirect;
             }
         }

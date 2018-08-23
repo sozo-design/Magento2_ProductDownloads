@@ -18,9 +18,9 @@
 
 namespace Sozo\ProductDownloads\Model\Resource;
 
+use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Magento\Framework\Model\ResourceModel\Db\Context;
-use Magento\Framework\Model\AbstractModel;
 
 class Download extends AbstractDb
 {
@@ -34,8 +34,10 @@ class Download extends AbstractDb
      */
     protected $dateTime;
 
-    public function __construct(Context $context, \Magento\Framework\Stdlib\DateTime\DateTime $date, \Magento\Framework\Stdlib\DateTime $dateTime, $resourcePrefix = null)
-    {
+    public function __construct(
+      Context $context, \Magento\Framework\Stdlib\DateTime\DateTime $date, \Magento\Framework\Stdlib\DateTime $dateTime,
+      $resourcePrefix = null
+    ) {
         parent::__construct($context, $resourcePrefix);
         $this->_date = $date;
     }
@@ -61,7 +63,10 @@ class Download extends AbstractDb
 
     public function checkUrlKey($urlKey, $storeId)
     {
-        $stores = [Store::DEFAULT_STORE_ID, $storeId];
+        $stores = [
+          Store::DEFAULT_STORE_ID,
+          $storeId,
+        ];
         $select = $this->_getLoadByUrlKeySelect($urlKey, $stores, 1);
         $select->reset(\Zend_Db_Select::COLUMNS)->columns('download_id')->limit(1);
 
